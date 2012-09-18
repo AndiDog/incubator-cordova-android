@@ -272,11 +272,13 @@ public class PluginManager {
      * Get the plugin object that implements the service.
      * If the plugin object does not already exist, then create it.
      * If the service doesn't exist, then return null.
+     * If plugins were not loaded yet (e.g. before first HTML page load), then
+     * return null.
      *
      * @param service       The name of the service.
      * @return              IPlugin or null
      */
-    private IPlugin getPlugin(String service) {
+    public IPlugin getPlugin(String service) {
         PluginEntry entry = this.entries.get(service);
         if (entry == null) {
             return null;
